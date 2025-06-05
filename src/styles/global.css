@@ -1,0 +1,139 @@
+@import 'tailwindcss';
+
+@tailwind utilities;
+@plugin '@tailwindcss/typography';
+@config "../../tailwind.config.js";
+
+@theme {
+  --font-sans:
+    Bricolage Grotesque Variable, Inter Variable, Inter, ui-sans-serif,
+    system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol', 'Noto Color Emoji';  
+}
+
+:root {
+  --background-color: #cee1bc;
+  --header-color: #99d561;
+  --accent-color: #facc15;
+  --text-color: #111827;
+  --border-radius: 0.5rem;
+
+  --hr-line-offset: 55%;
+  --hr-color: #756644;
+  --hr-text-color: rgb(251, 255, 0);
+  --hr-text-offset: 2ch;
+  --hr-thickness: 4px;
+  --background-primary: var(--background-color)
+}
+
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 32px;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+/* 
+:root hr {
+  --hr-line-color: var(--hr-color);
+  display: grid;
+  place-items: center;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(
+      to right,
+      var(--hr-line-color),
+      var(--hr-line-color) calc(50% - var(--hr-text-offset)),
+      transparent calc(50% - var(--hr-text-offset)),
+      transparent calc(50% + var(--hr-text-offset)),
+      var(--hr-line-color) calc(50% + var(--hr-text-offset)),
+      var(--hr-line-color)
+  );
+}
+
+:root hr::after {
+  content: "★";
+  font-weight: bold;
+  color: var(--hr-text-color);
+      position: absolute;
+      translate: 0 calc(var(--hr-thickness) / -2);
+} */
+/*
+** Customised symbolic hr line in Preview modded from TriDiamond's post (https://forum.obsidian.md/t/meta-post-common-css-hacks/1978/223)
+*/
+ hr {
+  margin-block-start: 2em;
+  margin-block-end: 2em;
+  border: none;
+  height: 1px;
+  background-image: linear-gradient(to right, var(--background-primary), DarkOliveGreen, green, yellowgreen, yellowgreen, green, DarkOliveGreen,var(--background-primary));
+}
+hr::after  {
+  content: '🌸';
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  transform-origin: 50% 50%;
+  padding: none;
+  background-color:transparent;  
+}
+
+hr::before {
+content: '🍀🍀';
+display: inline-block;
+position: absolute;
+left: 50%;
+transform: translate(-50%, -50%)rotate(160deg);
+transform-origin: 50% 50%;
+padding: none;
+background-color: var(--background-primary);
+}
+
+.face:hover::after {
+  content: "🥸"
+}
+
+.face::after{
+  content: "😎"
+}
+
+.face:active::after {
+  content: "😵‍💫"
+}
+
+.prose h1, h2 {
+  margin-bottom: 0.25em;
+  margin-top: 0.25em;
+}
+
+img.emoji {
+  width: 1.6em;
+  height: 1.6em;
+  vertical-align: middle;
+  display: inline;
+  margin: 0;
+}
+
+@import './typography.css';

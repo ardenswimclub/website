@@ -1,0 +1,50 @@
+---
+import Calendar from '@/components/calendar.astro';
+import Layout from '@/layouts/Layout.astro';
+import hoursText from  '@/data/hours.txt?raw';
+import { withBase } from '@/utils/url';
+import Container from '@/components/container.astro';
+
+import ClosedForSwimMeets from './closed-for-swim-meets.mdx';
+import E from '@/components/E.astro';
+
+
+const href=withBase('arden-fair-parking');
+
+const parking = `
+<h1><span class="emoji">⚠️</span> POOL PARKING LOT CLOSED <span class="emoji">⚠️</span></h1>
+<a href="${href}" class="underline text-lime-600 hover:text-lime-700">Shuttle information</a>`.replaceAll('\n','');
+
+const whyClosed = `
+<h1>Closed for Arden Fair Preperations</h1>
+<p class="text-sm">
+<strong>Why?</strong><br/>
+The pool is usually open 3–8 PM. Last year, we closed early for setup. 
+This year, we were asked to close by 3 PM. While opening from 12–3 PM was considered, 
+limited lifeguard availability due to school starting led us to decide that remaining 
+closed all day was the most practical choice.</p>
+`.replaceAll('\n','');
+
+const raftNight = `
+<p><span class="emoji">🦩</span><a href="${withBase('/events#raft-night')}" class="underline text-lime-600 hover:text-lime-700">Raft Night</a> Wednesdays 6-9pm
+</p>
+
+`.replaceAll('\n','');
+
+const calendarData = hoursText
+    .replace('{parking}', parking)
+    .replace('{whyClosed}', whyClosed)
+    .replace('{raftNight}', raftNight);
+
+const menu = 'main';
+---
+
+<Layout title="Hours" menuKey="main">
+    <Container class="mb-10" >
+    <Calendar calendarData={calendarData} />
+    <div class="bg-white border-1 border-black p-2 
+        prose prose-tightSmall  pt-4 pb-8 md:pt-4 md:pb-24 max-w-full">
+        <ClosedForSwimMeets />
+    </div>
+    </Container>
+</Layout>

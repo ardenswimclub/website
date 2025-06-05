@@ -1,0 +1,64 @@
+---
+import { withBase } from "@/utils/url";
+
+const {  menuKey, id = 0, menu } = Astro.props;
+
+const heading = menu.heading;
+
+const checked = (menuKey == menu.key) ? 'checked' : null;
+
+function  isCurrentPage(path) {
+  return (Astro.originPathname.endsWith(path));
+}
+
+
+---
+
+<div
+  class="block
+  w-screen
+  bg-gray-100
+  border-b-1
+  border-gray-400
+  z-100
+  m-y-0"
+>
+  <!-- Checkbox Toggle -->
+  <input type="checkbox" name="accordion-select" id={`menu-toggle${id}`} 
+    class={`hidden peer`} {checked} />
+  <label for={`menu-toggle${id}`} 
+    class="md:hidden text-md font-bold block 
+    cursor-pointer bg-gray-200 
+    px-1 py-1">
+    {heading}
+  </label>
+   
+  <ul
+    class={`
+      overflow-hidden     
+      flex flex-col
+      md:hidden 
+      max-h-0
+      peer-checked:max-h-[1000px]
+      peer-not-checked:hidden"
+      transition-all duration-500 ease-in-out`}
+  >
+    {
+      menu.items.map((item) => (
+        <li class:list={["py-1 px-4 text-md border-b-1",
+          isCurrentPage(item.path) ? 'bg-amber-200' : null
+        ]}>
+          <a
+            href={withBase(item.path)}
+            target={item.blank ? "_blank" : undefined}
+            rel={item.blank ? "noopener" : undefined}
+            class:list={["flex items-center text-gray-600",
+              isCurrentPage(item.path) ? 'font-black' : null
+            ]}>
+            {item.title}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>

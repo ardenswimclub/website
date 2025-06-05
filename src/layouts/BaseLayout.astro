@@ -1,0 +1,98 @@
+---
+import { SEO } from "astro-seo";
+import Footer from "@/components/footer/footer.astro";
+import Container from "@/components/container.astro";
+
+import "@fontsource-variable/inter/index.css";
+import "@fontsource-variable/bricolage-grotesque";
+import "@/styles/global.css";
+//import { undefined } from "astro:schema";
+import { withBase } from "@/utils/url";
+import Header from "@/components/header.astro";
+import Breakpoints from "@/components/breakpoints.astro";
+
+
+export interface Props {
+  title: string;
+  markdown?: boolean | undefined;
+  noContainer?: boolean | undefined;
+  menuKey: string;
+  subtitle?: string | undefined;
+}
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+
+const resolvedImageWithDomain = new URL(
+  "/opengraph.jpg",
+  Astro.site
+).toString();
+
+const { title, markdown, noContainer, menuKey, subtitle } = Astro.props;
+
+
+const makeTitle = title
+  ? title + " | " + "Arden Swim Club"
+  : "Arden Swim Club";
+
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
+
+    <link rel="apple-touch-icon" sizes="180x180" href={withBase('/favicon/apple-touch-icon.png')}>
+    <link rel="icon" type="image/png" sizes="32x32" href={withBase('/favicon/favicon-32x32.png')}>
+    <link rel="icon" type="image/png" sizes="16x16" href={withBase('/favicon/favicon-16x16.png')}>
+    <link rel="manifest" href={withBase('/favicon/site.webmanifest')}>
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
+    <!-- twitter={{
+      creator: "@surjithctly",
+      site: "@web3templates",
+      card: "summary_large_image",
+    }}  -->
+    <SEO
+      title={makeTitle}
+      description="Arden Swim Club is a magical community swimming pool located in North Wilmington, Delaware."
+      canonical={canonicalURL}
+       
+      openGraph={{
+        basic: {
+          url: canonicalURL,
+          type: "website",
+          title: `Arden Swim Club - North Wilmington, Delaware`,
+          image: resolvedImageWithDomain,
+        },
+        image: {
+          alt: "Astroship Homepage Screenshot",
+        },
+      }}
+    />
+
+    <script type="module" src={withBase('/js/todays-hours.js')}></script>
+    <script src="https://unpkg.com/twemoji@latest/dist/twemoji.min.js" crossorigin="anonymous"></script>
+    
+  </head>
+  <body>
+    <Header {subtitle} {menuKey} />
+    <!-- container moved to child layouts -->
+    <Container {noContainer} 
+      class={markdown ? 'prose prose-tightSmall sm:prose-tight  pt-4 pb-8 md:pt-4 md:pb-24' : ''}>
+      
+    <slot />
+    </Container>
+    <Footer />
+    <!-- <Breakpoints /> -->
+    <style is:global>
+      /* Improve Page speed */
+      /* https://css-tricks.com/almanac/properties/c/content-visibility/ */
+      img {
+        content-visibility: auto;
+      }
+    </style>
+  </body>
+</html>

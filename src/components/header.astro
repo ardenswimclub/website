@@ -1,0 +1,77 @@
+---
+import { withBase } from "@/utils/url";
+import Container2 from "./container2.astro";
+import Navbar from "./navbar/navbar.astro";
+
+const { menuKey, subtitle } = Astro.props;
+
+import { menus } from "../data/menus.ts";
+import Accordion from "./navbar/accordion.astro";
+import Breadcrumbs from "./navbar/breadcrumbs.astro";
+
+const menusToShow = {
+  main: true,
+  "swim-team": ["swim-team", "swim-meet"].includes(menuKey),
+  "swim-meet": ["swim-team", "swim-meet"].includes(menuKey)
+};
+---
+
+<Container2 headerColor="var(--header-color)">
+  <!-- fixed top-0 w-full bg-white py-4 transition-all duration-300 z-50 -->
+  <!-- 
+    <header id="site-header" class="flex flex-col lg:flex-row justify-between items-center  py-2 "> 
+     -->
+  <header class="flex flex-col md:flex-row 
+    justify-between items-center
+     text-sm md:text-md
+    ">
+    
+    <a href={withBase("/")} class="text-lg md:text-2xl
+        font-bold text-slate-800 
+        whitespace-nowrap">
+      Arden Swim Club
+    </a>
+
+    <span data-today-hours></span>
+
+    <Navbar menu={menus["main"]} class={`hidden sm:flex`} />
+  </header>
+</Container2>
+
+<!-- sub menus -->
+{
+  menusToShow["swim-team"] ? (
+    <Container2
+      headerColor="white"
+      class="hidden sm:flex sm:flex-row items-center"
+    >      
+      <Navbar menu={menus["swim-team"]} heading="Swim Team" 
+        class="hidden sm:flex text-sm md:text-md"/>
+    </Container2>
+  ) : (
+    ""
+  )
+}
+
+{
+  menusToShow["swim-meet"] ? (
+    <Container2
+      headerColor="#eee"
+      class="hidden sm:flex sm:flex-row items-center"
+    >
+      {/* <b class="border-b-3 mr-4 border-transparent">Swim Meets</b> */}
+      <Navbar menu={menus["swim-meet"]} class="hidden sm:flex"/>
+    </Container2>
+  ) : (
+    ""
+  )
+}
+
+
+<div id="accordion-container" class="inline-block sm:hidden">
+  <Accordion menu={menus["main"]} menuKey={menuKey} id="1"/>
+  <Accordion menu={menus["swim-team"]} menuKey={menuKey} id="2" />
+  <Accordion menu={menus["swim-meet"]} menuKey={menuKey} id="3" />
+</div>
+
+<Breadcrumbs {menus} menuKey={menuKey} />

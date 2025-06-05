@@ -1,0 +1,64 @@
+---
+layout: ../../layouts/MarkdownLayout.astro
+title: Swimmingly
+menu: swim-team
+---
+import { Image } from "astro:assets";
+import swimminglyLogin from "@/assets/images/swim-team/swimmingly-clubhouse-login.png";
+import Link from '@/components/ui/link.astro';
+
+
+
+<div class="grid md:grid-cols-2 gap-4 ">
+  
+  <div >
+
+
+# Swimmingly
+
+We use [Swimmingly](https://swimmingly.app/) to help run swim meets more smoothly and efficiently.
+
+## Here’s how it works:
+
+### Swimmingly Clubhouse
+
+This is the website where you can sign up your child for the swim team and declare which meets they will be attending.
+
+<Link href="https://clubhouse.swimmingly.app/login"
+blank={true}>Swimmingly Clubhouse Website </Link>
+
+### SwimminglyFan
+
+This is an app designed for parents and spectators. It provides live results during meets, access to heat sheets, push notifications, and allows you to follow swimmers throughout the season. It’s compatible with both iPhone and Android devices.
+
+<Link class="mb-6 md:mr-6" href="https://play.google.com/store/apps/details?id=app.swimmingly.myswimmingly"
+blank={true}>Swimmingly Fan (Android)</Link>
+
+<Link href="https://apps.apple.com/us/app/swimminglyfan/id1461138789"
+blank={true}>Swimmingly Fan (Apple)</Link>
+
+### Swimmingly Timer (for Volunteers)
+
+This version of Swimmingly is specifically for volunteers helping at the meets, including roles such as starter, timer, stroke and turn judge, and scorekeeper. This app ensures volunteers can easily access and perform their duties during meets.
+
+<Link class="mb-6 md:mr-6" href="https://play.google.com/store/apps/details?id=com.hydroxphere.meetcentral"
+blank={true}>Swimmingly Timer (Android)</Link>
+
+<Link href="https://apps.apple.com/us/app/swimmingly/id789829201"
+blank={true}>Swimmingly Timer (Apple)</Link>
+
+We encourage all families to download the Swimmingly apps right away to stay connected and involved with the team throughout the season\!
+
+  </div>
+  
+  <div class="hidden md:inline not-prose p-3">
+  
+  <a href="https://clubhouse.swimmingly.app/login" target="_blank" rel="noopener">
+    <Image 
+        src={swimminglyLogin}
+        alt="Login screen for Swimmingly Clubhouse" />
+    </a>
+    <span class="text-sm">Screenshot of Login screen for Swimmingly Clubhouse</span>
+  </div>
+
+</div>

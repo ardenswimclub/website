@@ -1,0 +1,55 @@
+---
+import Emoji from 'astro-emoji';
+
+const {e, class: className } = Astro.props;
+
+const getLabel = (e) => {
+  switch(e) {  
+    case '😭': return 'Crying face';
+    case '🦈': return 'Shark';
+    case '🏠': return 'House';
+    case '🏊‍♂️': return 'Man swimming';
+    case '🌊': return 'Ocean wave';
+    case '🍔': return 'Hamburger';
+    case '🍦': return 'Ice cream cone';
+    case '🍽️': return 'Plate with fork and knife';
+    case '📣': return 'Megaphone or loudspeaker';
+    case '☕': return 'Hot beverage, coffee';
+    case '👉': return 'Right-pointing index finger';
+    case '💳': return 'Credit card';
+    case '💡': return 'Light bulb';
+    case '🔔': return 'Bell';
+    case '🚐': return 'Shuttle van';
+    case '📍': return 'Location pin or map marker';
+    case '♿': return 'Wheelchair symbol';
+    case '💸': return 'Money with wings';
+    case '🤗': return 'Smiling face with open hands';
+    case '💙': return 'Blue heart';
+    case '✅': return 'Green check mark';
+    case '⚠️': return 'Warning sign';
+    case '🏊': return 'Person swimming';
+    case '🤔': return 'Thinking face';
+    case '🔐': return 'Locked lock';
+    case '🚫': return 'Prohibited sign';
+    case '❗': return 'Exclamation mark';
+    case '💦': return 'Sweat droplets or water splashes';
+    case '🦸': return 'Superhero';
+    case '⛈️': return 'Cloud with lightning and rain';
+    case '🕓': return 'Four o’clock';
+    case '🚸': return 'Children crossing sign';
+    case '🍪': return 'Cookie';
+    case '👶': return 'Baby';
+    case '🕚': return 'Eleven o’clock';
+    case '🏊‍♀️': return 'Woman swimming';
+    case '🦩': return 'Flamingo';
+    default: return 'Emoji';
+  }
+};
+
+let symbol = e;
+let label = getLabel(e);
+
+---
+<span aria-hidden={true} aria-label={label} role="img" class="emoji">
+    {symbol}
+</span>

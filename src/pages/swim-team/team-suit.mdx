@@ -1,0 +1,39 @@
+---
+layout: ../../layouts/MarkdownLayout.astro
+title: Team Suit
+menu: swim-team
+---
+import { Image } from "astro:assets";
+import teamSuitImage from "@/assets/images/swim-team/team-suit.png";
+import Link from '@/components/ui/link.astro';
+
+
+<div class="grid md:grid-cols-2 gap-4 ">
+  <div >
+# Team Suit
+
+  Arden proudly supports a local business for swim team bathing suits. 
+For over 35 years, The Swim Shop has been serving local swim teams 
+in the tri-state area. As a family-run business, they are known for
+ their excellent customer service and commitment to the community. 
+ You can trust the quality of the products they sell, and they are 
+ very knowledgeable about everything they offer. Stop in to have 
+ your child measured for the best fit.
+
+**We highly recommend visiting the shop to try on your suit before purchasing**
+
+<Link blank={true} href="https://store.theswimshopde.com/products/arden-swim-club" 
+ >🛒 The Swim Shop</Link>
+
+
+  </div>
+  <div class="not-prose p-3">
+  <a href="https://store.theswimshopde.com/products/arden-swim-club" target="_blank" rel="noopener">
+    <Image 
+        src={teamSuitImage}
+        alt="Flyer for the Arden Shark Swim Team Suit" />
+        </a>
+  </div>
+</div>
+
+

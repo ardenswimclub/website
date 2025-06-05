@@ -1,0 +1,52 @@
+---
+import { withBase } from '@/utils/url';
+
+interface Props {
+  href: string;
+  size?: "md" | "lg";
+  block?: boolean;
+  style?: "outline" | "primary" | "inverted" | "muted";
+  class?: string;
+  blank?: true | false | undefined;
+  [x: string]: any;
+}
+
+const {
+  href,
+  block,
+  size = "lg",
+  style = "primary",
+  class: className,
+  blank = false,
+  ...rest
+} = Astro.props;
+
+const sizes = {
+  lg: "px-5 py-2.5",
+  md: "px-4 py-2",
+};
+
+const styles = {
+  outline: "bg-white border-2 border-black hover:bg-gray-100 text-black ",
+  primary: "bg-blue-600 text-white hover:bg-blue-700 border-2 border-transparent",
+  inverted: "bg-white text-black   border-2 border-transparent",
+  muted: "bg-gray-100 hover:bg-gray-200   border-2 border-transparent",
+};
+
+const target= blank ? "_blank" : "";
+const rel= blank ? "noopener" : "";
+---
+
+<a
+  href={withBase(href)}
+  class:list={[
+    "no-underline inline-block font-semibold rounded-sm text-center cursor-pointer transition",
+    block && "w-full",
+    sizes[size],
+    styles[style],
+    className,
+  ]}
+  {target}
+  {rel}
+  ><slot />
+</a>

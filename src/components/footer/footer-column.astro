@@ -1,0 +1,29 @@
+---
+import { withBase } from "@/utils/url";
+import type { menuT } from '@/data/menus.ts';
+
+interface Props {
+    menu: menuT;
+    class?: string;
+    [x: string]: any;
+}
+
+const { menu, class: className, ...rest } = Astro.props;
+---
+
+<div>
+    <h2
+        class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white"
+    >
+        {menu.heading}
+    </h2>
+    <ul class="text-gray-500 dark:text-gray-400 font-medium">
+        {menu.items.map((item) => (
+            <>
+            <li class="mb-4">
+                <a href={withBase(item.path)} class="hover:underline">{item.title}</a>
+            </li>           
+            </>
+        ))}
+    </ul>
+</div>

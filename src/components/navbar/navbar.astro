@@ -1,0 +1,54 @@
+---
+import { withBase } from "@/utils/url";
+import Accordion from "./accordion.astro";
+const { menu, class: className } = Astro.props;
+
+function mapChildrenPaths(children) {
+  return children.map(o => {
+    return {title: o.title, path: withBase(o.path)}
+  });
+}
+
+function isCurrentPage(path) {
+  return (Astro.originPathname.endsWith(path));
+}
+
+const heading = menu.heading;
+
+---
+
+
+<div id="menu-container" class:list={[`
+    lg:w-auto 
+    text-md md:text-lg mr-1
+    items-center justify-center
+    flex `,className]}>      
+  <ul class="flex flex-row gap-3 my-1
+    items-center justify-center whitespace-nowrap
+  ">
+  { heading ? (
+    <li class="border-b-3 border-transparent font-bold">
+      <a href={withBase(menu.path)}>{heading}</a>
+    </li>
+    ) : ( "" )
+  }
+  {menu.items.map((item,index) => (
+    <>
+      <li>
+        <a
+          href={withBase(item.path)}          
+          target={item.blank ? '_blank' : undefined}
+          rel={item.blank ? 'noopener' : undefined}
+          class:list={[`flex lg:px-1 items-center 
+           hover:text-gray-900 text-gray-600
+            border-b-3 hover:border-yellow-400`,
+              isCurrentPage(item.path) ? 'border-blue-500' : 'border-transparent'
+            ]}>
+          <span>{item.title}</span>                      
+        </a>
+      </li>
+    </>
+  ))}
+  </ul>
+
+</div>

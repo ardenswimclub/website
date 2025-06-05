@@ -1,0 +1,38 @@
+---
+import Container from "@/components/container.astro";
+// import Cta from "@/components/cta.astro";
+import Features from "@/components/features.astro";
+import Hero from "@/components/hero.astro";
+// import Logos from "@/components/logos.astro";
+import Layout from "@/layouts/Layout.astro";
+import background from '@/assets/images/landing-page/pool-watercolor.png';
+import Media from "@/components/media.astro";
+
+const menuKey = 'main';
+//<!-- <section class="flex flex-col justify-start  w-full bg-no-repeat bg-cover bg-bottom z-0 relative shadow-xl/20"  -->
+---
+
+<Layout title="Home" noContainer={true} {menuKey}>
+  <!-- <Container> -->
+    <section class="h-screen flex flex-col justify-start 
+       w-full bg-no-repeat bg-cover bg-bottom" 
+      style={`background-image: url('${background.src}'); height: calc(100vh - 56px);`}  >
+      <Container>
+        <Hero />
+    </Container>
+  </section>
+
+    <Container class="mt-10">      
+      <div id="more">
+        <Features />
+      </div>
+      <div class="mt-10">
+        <Media />
+      </div>
+      <div class="mb-20"></div>
+    </Container>
+
+    <!-- <Logos />
+    <Cta /> -->
+  <!-- </Container> -->
+</Layout>

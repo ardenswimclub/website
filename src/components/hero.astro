@@ -1,0 +1,40 @@
+---
+import { Image } from "astro:assets";
+import heroImage from "@/assets/images/landing-page/arden-swim-club-logo.png";
+
+import Link from "@/components/ui/link.astro";
+---
+
+<main
+  class="grid lg:grid-cols-2 place-items-center 
+      lg:px-15 lg:mt-16 px-5 mt-5
+      pb-8 md:pt-2 
+      md:pb-10 
+      bg-gray-300/40 rounded">
+  
+  <div class="py-6 md:order-1 hidden md:block">
+    <Image
+      src={heroImage}
+      alt="The Arden Swim Club logo"
+      height=300
+      widths={[200, 400, 600]}
+      sizes="(max-width: 700px) 100vw, 620px"
+      loading="eager"
+      format="avif"
+    />
+  </div>
+  <div>
+    <h1
+      class="text-3xl lg:text-6xl xl:text-7xl 
+        font-bold lg:tracking-tight xl:tracking-tighter">
+      Welcome to Arden Swim Club
+    </h1>
+    <p class="text-lg my-4 text-black-600 max-w-xl">
+      A hidden oasis in the trees. Conveniently located in North Wilmington off Harvey Road.      
+    </p>    
+      <div class="">
+          <Link href="#more">Learn More 👇</Link>
+      </div>
+      
+  </div>
+</main>

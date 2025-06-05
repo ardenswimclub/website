@@ -1,0 +1,29 @@
+@layer components {
+  
+/* 
+  .prose li {
+    color: red;
+    @apply bg-blue-100;
+    @apply py-0;
+    margin-bottom: 0;
+  } */
+    /* .prose h1 {
+      @apply text-4xl font-extrabold text-blue-600;
+    }
+  
+    .prose p {
+      @apply text-base text-gray-700;
+    }
+  
+    .prose a {
+      @apply text-blue-600 underline hover:text-blue-800;
+    }
+  
+    .prose ul {
+      @apply list-disc list-inside text-green-800;
+    }
+    
+   */
+
+  }
+  

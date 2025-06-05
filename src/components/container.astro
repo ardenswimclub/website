@@ -1,0 +1,11 @@
+---
+const { class: className, noContainer } = Astro.props;
+
+const defaultClassList = "max-w-(--breakpoint-xl) mx-auto px-5";
+const classList = noContainer ? '' : defaultClassList;
+---
+
+
+<div class:list={[classList, className]}>
+  <slot />
+</div>

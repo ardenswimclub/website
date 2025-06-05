@@ -1,0 +1,40 @@
+---
+import Container from "@/components/container.astro";
+import E from "@/components/E.astro";
+import Layout from "@/layouts/Layout.astro";
+import { withBase } from "@/utils/url";
+//import  Button  from "@/components/ui/button"; // If you're using shadcn UI for buttons
+
+
+---
+
+<Layout title="404 Not Found" menuKey="main">
+  <Container>
+    <div class="min-h-[calc(100vh-16rem)] flex items-center justify-center">
+      <div class="mt-16 text-center">
+
+<html lang="en">
+  <head>
+    <title>404 - Page Not Found</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body class="flex flex-col items-center justify-center min-h-screen bg-blue-100 text-center p-8">
+    <h1 class="text-5xl font-bold mb-4">🦈 404 - Whoops!</h1>
+    <p class="text-lg mb-8">
+      Oh no! A hungry shark must have gobbled up this webpage...<br />
+      Maybe it’s swimming around in the deep end? 🏊‍♂️🌊
+    </p>    
+    <a href={withBase('/')} class="inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition">
+      🏠 Return to Safety (Homepage)
+    </a>
+    <p class="text-sm mt-8 text-gray-600">
+      If you keep getting lost, maybe it’s time to invest in a pair of water wings... 😉
+    </p>
+  </body>
+</html>
+
+      </div>
+    </div>
+  </Container>
+</Layout>

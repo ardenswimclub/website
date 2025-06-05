@@ -29,7 +29,7 @@ if (menuKey != 'main')
   crumbs.unshift(mainCrumb);
 
 //if(crumbs.length == 1)
-  console.log({crumbs, pathSansBase, base, currentPath, menuKey});
+  //console.log({crumbs, pathSansBase, base, currentPath, menuKey});
 ---
 {() => ( crumbs.length == 1 ? null : 
   <ul class="flex flex-wrap sm:hidden
@@ -39,7 +39,7 @@ if (menuKey != 'main')
       <li class="m-0">
         <a href={withBase(crumb.path)}>{crumb.title}</a>
         {index == crumbs.length -1 ? null : 
-          <span class="mx-3"> &gt; </span>
+          <span class="mx-2">/</span>
         }
       </li>
     ))}

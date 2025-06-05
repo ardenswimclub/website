@@ -11,5 +11,5 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   site: 'https://ardenswimclub.github.io',
-  base: '/demo',    
+  base: '/',    
 });

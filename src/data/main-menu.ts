@@ -43,6 +43,10 @@ export const contact : menuT = {
   path: '',
   items: [
     {
+      title: "Jobs",
+      path: "https://forms.gle/gw49v9RjspY5n3qN8"
+    },
+    {
       title: "Donate",
       path: "/donate",
     },
@@ -60,7 +64,7 @@ export const contact : menuT = {
     },
     {
       title: "Venmo",
-      path: "https://venmo.com/Arden-Swim?txn=pay",
+      path: "https://venmo.com/Arden-Swim-Club?txn=pay",
     }
   ]
 }

@@ -107,8 +107,9 @@ const calendarHours = {
 
 export function getHoursForToday() {
   const today = new Date().toISOString().split('T')[0];
-  const hours = calendarHours[today];  
-  if(hours)
+  const hours = calendarHours[today] || ''; 
+  if(!!hours)
     return ['Hours: <b class="mr-1">', hours, '</b><span class="face"></span>'].join('');
-  else 'Closed Today <span class="emoji">😭</span>';
+  else 
+    return 'Closed Today <span class="emoji">😭</span>';
 }

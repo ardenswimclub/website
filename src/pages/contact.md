@@ -11,8 +11,9 @@ Whether you’re a longtime member or thinking about joining, we’d love to hea
 
 [Email](mailto:ardenswimgild@gmail.com)<br/>
 [Facebook](https://facebook.com/ArdenSwimClub)<br/>
-[Venmo](https://venmo.com/Arden-Swim?txn=pay)
+[Venmo](https://venmo.com/Arden-Swim-Club?txn=pay)
 
+Membership payments can be made through [Square](https://square.link/u/prEOtCrI)
 
 ### Mailing address
 Arden Swim Club<br/>

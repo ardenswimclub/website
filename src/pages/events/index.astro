@@ -5,6 +5,8 @@ import Layout from "@/layouts/Layout.astro"
 import RaftNight from './raft-night.mdx';
 import LapSwimHour from './lap-swim-hour.mdx';
 import BabyPoolHour from './baby-pool-hour.mdx';
+import Fundraisers from './fundraisers.mdx';
+
 
 const title = 'Events at the Pool'
 const menuKey = 'main';
@@ -27,6 +29,9 @@ const divClassList = [
         <hr/>
         <div class:list={divClassList}>
             <BabyPoolHour/>
+        </div>
+        <div class:list={divClassList}>
+            <Fundraisers/>
         </div>
     </Container>
     

@@ -19,9 +19,9 @@ Secretary: Megan Otto
 
 ### Members at large
 
-Jen Abernethy   
+Jen Abernethy  
 Maureen Gordan  
-Tess Mukoda  
+Matt McCreary
 Michelle Santiago  
 Jeannie Stith
 
